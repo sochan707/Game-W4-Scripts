@@ -22,9 +22,9 @@ public class Orb : MonoBehaviour
     [SerializeField] private float spinSpeed = 90f;
 
     private Vector3 basePosition;
-    private Vector3 baseScale;
+    // private Vector3 baseScale;
     private int clickIndex;
-    private float hideTime = -1f;
+    // private float hideTime = -1f;
     private Camera dragCamera;
     private float dragDepth;
     private Vector3 dragOffset;

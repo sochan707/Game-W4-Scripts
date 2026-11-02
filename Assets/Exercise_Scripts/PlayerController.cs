@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Lab wiring (drag your objects here)")]
     [SerializeField] private GameObject orbPrefab;   // TODO 5: used to spawn a bonus orb
+    [SerializeField] private GameObject wallPrefab;
+
     [SerializeField] private Transform cameraTransform; // used by TODO 3 (camera follow)
 
     private Rigidbody rb;
@@ -58,5 +60,9 @@ public class PlayerController : MonoBehaviour
     // TODO 4 (OnMouseDown is on the Orb script, not here — see Orb.cs.)
     // TODO 5 (OnDestroy): when the Player is destroyed, Instantiate one
     //       bonus orbPrefab at your last position.
+    private void OnDestroy(){
+        Instantiate(orbPrefab, transform.position, Quaternion.identity);
+        
+    }
     // ---------------------------------------------------------------
 }

@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 72f5815a00e2b48f590cbe1162814cd6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - orbPrefab: {fileID: 6030669769613964129, guid: f4f900a599ae4bd4e8b530f2602a42e3, type: 3}
+  - wallPrefab: {fileID: 8889222170999057275, guid: c7a696291c26f454e921e2656b207475, type: 3}
+  - cameraTransform: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

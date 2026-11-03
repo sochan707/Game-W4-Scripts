@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("You hit " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
     // TODO 2 (OnTriggerEnter): if other.CompareTag("Orb"), Destroy the orb
     //       and Debug.Log the collection. (Orb prefab already tagged "Orb".)

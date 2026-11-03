@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform; // used by TODO 3 (camera follow)
 
     private Rigidbody rb;
-
+    private int score = 0;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,8 +53,23 @@ public class PlayerController : MonoBehaviour
 
     // ---------------------------------------------------------------
     // TODO 1 (OnCollisionEnter): log the name of any wall you bump.
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("You hit " + collision.gameObject.name);
+    }
     // TODO 2 (OnTriggerEnter): if other.CompareTag("Orb"), Destroy the orb
     //       and Debug.Log the collection. (Orb prefab already tagged "Orb".)
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Orb"))
+        {
+            Destroy(other.gameObject);
+
+            score++;
+
+            Debug.Log("Score: " + score);
+        }
+    }
     // TODO 3 (LateUpdate): move cameraTransform to
     //       player position + offset so it follows you smoothly.
     // TODO 4 (OnMouseDown is on the Orb script, not here — see Orb.cs.)

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform; // used by TODO 3 (camera follow)
 
     private Rigidbody rb;
-    private int score = 0;
+    private bool hitWall;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("You hit " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Wall"))
         {
+            hitWall = true;
             Destroy(gameObject);
         }
     }
@@ -68,10 +69,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Orb"))
         {
             Destroy(other.gameObject);
-
-            score++;
-
-            Debug.Log("Score: " + score);
+            GameManager.Instance.Collect();
         }
     }
     // TODO 3 (LateUpdate): move cameraTransform to
@@ -80,6 +78,8 @@ public class PlayerController : MonoBehaviour
     // TODO 5 (OnDestroy): when the Player is destroyed, Instantiate one
     //       bonus orbPrefab at your last position.
     private void OnDestroy(){
+        // OnDestroy also runs when Play stops; only spawn on a real wall death.
+        if (!hitWall) return;
         Instantiate(orbPrefab, transform.position, Quaternion.identity);
         
     }
